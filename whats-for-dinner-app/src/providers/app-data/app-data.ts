@@ -86,9 +86,6 @@ export class AppDataProvider {
     this.dinnerTime = "20:00";
 
     this.determineCutOffTimes();
-
-    //test comment
-    //another test comment
   }
 
 }
