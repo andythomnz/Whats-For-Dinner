@@ -1,17 +1,23 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>What's For {{this.getCapitalisedMeal()}}?</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <div text-center>
+  <p><strong> {{this.getMealTimeDescription()}} </strong></p>
+  </div>
+
+  <!-- <p>
+    The meal times shall be as follwing:<br><br>
+    Breakfast time is {{this.appData.breakfastTime}} but can be eaten
+    between {{this.appData.breakfastStart}} and {{this.appData.breakfastEnd}} <br><br>
+
+    Lunch time is {{this.appData.lunchTime}} but can be eaten
+    between {{this.appData.lunchStart}} and {{this.appData.lunchEnd}} <br><br>
+
+    Dinner time is {{this.appData.dinnerTime}} but can be eaten
+    between {{this.appData.dinnerStart}} and {{this.appData.dinnerEnd}} <br><br>
+  </p> -->
 </ion-content>
