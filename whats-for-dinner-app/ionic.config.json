@@ -1,0 +1,7 @@
+{
+  "name": "whats-for-dinner-app",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
