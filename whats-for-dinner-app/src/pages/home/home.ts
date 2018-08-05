@@ -3,6 +3,8 @@ import { NavController } from 'ionic-angular';
 import { AppDataProvider } from '../../providers/app-data/app-data';
 import * as moment from "moment";
 
+// hihihi
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'

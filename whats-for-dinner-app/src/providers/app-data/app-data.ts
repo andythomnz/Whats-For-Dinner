@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import * as moment from "moment";
+import moment from 'moment';
 
 /*
   Generated class for the AppDataProvider provider.
@@ -21,10 +21,12 @@ export class AppDataProvider {
   isLunchTime: Boolean;
   dinnerStart: String;
   dinnerTime: String;
-  dinnerend: String;
+  dinnerEnd: String;
   isDinnerTime : Boolean;
   currentMeal: String;
   currentTime: Moment;
+
+  meals: any[];
 
   checkIfBreakfastTime() {
     let currentTime = moment(this.currentTime);
@@ -154,8 +156,56 @@ export class AppDataProvider {
 
   }
 
+  sortMealList() {
+    this.meals.sort(function(a, b) {
+      var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+      var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      // names must be equal
+      return 0;
+    });
+  }
+
   constructor(public http: HttpClient) {
     console.log('Hello AppDataProvider Provider');
+
+    //hihihi
+    //hi
+
+    this.meals = [];
+    this.meals.push({
+      name: "Default Breakfast",
+      cost: 0,
+      convenience: 0,
+      breakfast: true,
+      lunch: false,
+      dinner: false
+    });
+
+    this.meals.push({
+      name: "Default Lunch",
+      cost: 1,
+      convenience: 1,
+      breakfast: false,
+      lunch: true,
+      dinner: false
+    });
+
+    this.meals.push({
+      name: "Default Dinner",
+      cost: 2,
+      convenience: 2,
+      breakfast: false,
+      lunch: false,
+      dinner: true
+    });
+
+    this.sortMealList();
 
     this.breakfastTime = "08:00";
     this.lunchTime = "13:00";
