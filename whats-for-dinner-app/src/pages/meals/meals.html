@@ -14,13 +14,13 @@
 <ion-content padding>
 
   <ion-list>
-    <ion-item-sliding *ngFor="let meal of this.appData.meals; let mealIndex = index">
+    <ion-item-sliding *ngFor="let meal of this.appData.meals; let mealIndex = index" #slidingItem>
       <button ion-item (click)="viewMeal(mealIndex)">{{meal.name}}</button>
       <ion-item-options slide="right">
-        <button ion-button>
+        <button ion-button (click)="edit(mealIndex, slidingItem)">
           <ion-icon name="md-create"> </ion-icon>
         </button>
-        <button color="danger" ion-button>
+        <button color="danger" (click)="deleteButtonClicked(mealIndex,slidingItem)" ion-button>
           <ion-icon name="trash"> </ion-icon>
         </button>
       </ion-item-options>

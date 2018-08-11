@@ -9,7 +9,8 @@ import { MealsPage } from '../pages/meals/meals';
 import { SettingsPage } from '../pages/settings/settings';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
-import { ViewMealPage} from '../pages/view-meal/view-meal';
+import { ViewMealPage } from '../pages/view-meal/view-meal';
+import { EditMealPage } from '../pages/edit-meal/edit-meal';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -22,7 +23,8 @@ import { AppDataProvider } from '../providers/app-data/app-data';
     SettingsPage,
     HomePage,
     TabsPage,
-    ViewMealPage
+    ViewMealPage,
+    EditMealPage
   ],
   imports: [
     HttpClientModule,
@@ -36,7 +38,8 @@ import { AppDataProvider } from '../providers/app-data/app-data';
     SettingsPage,
     HomePage,
     TabsPage,
-    ViewMealPage
+    ViewMealPage,
+    EditMealPage
   ],
   providers: [
     StatusBar,

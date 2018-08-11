@@ -8,6 +8,12 @@
 
   <ion-navbar>
     <ion-title>{{this.selectedMeal.name}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-end (click)="editSelectedMeal()">
+        Edit
+        <!-- <ion-icon name="options"></ion-icon> -->
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -48,8 +54,12 @@
       <ion-checkbox disabled="true" [(ngModel)]="this.selectedMeal.dinner"></ion-checkbox>
   </ion-item>
 
-  <!-- <ion-item>
-      <ion-range min="0" max="2" step="1" snaps="true"></ion-range>
-  </ion-item> -->
+  <br><br><br>
+
+  <ion-item>
+      <button ion-button block color="danger" (click)="deleteButtonClicked()">Delete Meal</button>
+  </ion-item>
+
+
 
 </ion-content>

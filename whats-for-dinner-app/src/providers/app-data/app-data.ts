@@ -183,6 +183,10 @@ export class AppDataProvider {
     this.selectedMealIndex = index;
   }
 
+  deleteMeal(index) {
+    this.meals.splice(index, 1);
+  }
+
   constructor(public http: HttpClient) {
     console.log('Hello AppDataProvider Provider');
 

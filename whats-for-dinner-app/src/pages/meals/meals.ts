@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { AppDataProvider } from '../../providers/app-data/app-data';
 import { ViewMealPage } from '../view-meal/view-meal';
+import { EditMealPage } from '../edit-meal/edit-meal';
 
 @Component({
   selector: 'page-meals',
@@ -65,7 +66,8 @@ export class MealsPage {
               dinner: dinner
             };
             this.appData.meals.push(newMeal);
-            this.appData.sortMealList();
+            this.appData.setSelectedMealIndex(this.appData.meals.length-1);
+            this.navCtrl.push(EditMealPage);
           }
         }
       ]
@@ -77,6 +79,41 @@ export class MealsPage {
   viewMeal(mealIndex) {
     this.appData.setSelectedMealIndex(mealIndex);
     this.navCtrl.push(ViewMealPage);
+  }
+
+  edit(mealIndex, slidingItem: ItemSliding) {
+    slidingItem.close();
+    this.appData.setSelectedMealIndex(mealIndex);
+    this.navCtrl.push(EditMealPage);
+  }
+
+  deleteButtonClicked(mealIndex, slidingItem: ItemSliding) {
+    slidingItem.close();
+    let selectedMeal = mealIndex;
+    let alert = this.alertController.create({
+      title: "Are you sure?",
+      message: "Do you really want to delete " + this.appData.meals[selectedMeal].name + "?",
+      buttons: [
+        {
+          text: "Cancel",
+          role: "cancel",
+          handler: () => {
+
+          }
+        },
+        {
+          text: "Delete",
+          handler: () => {
+            this.deleteSelectedMeal(selectedMeal);
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
+  deleteSelectedMeal(mealIndex) {
+    this.appData.deleteMeal(mealIndex);
   }
 
 }
