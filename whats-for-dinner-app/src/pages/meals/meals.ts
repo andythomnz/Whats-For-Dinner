@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { AppDataProvider } from '../../providers/app-data/app-data';
+import { ViewMealPage } from '../view-meal/view-meal';
 
 @Component({
   selector: 'page-meals',
@@ -71,6 +72,11 @@ export class MealsPage {
     });
     addMealAlert.present();
 
+  }
+
+  viewMeal(mealIndex) {
+    this.appData.setSelectedMealIndex(mealIndex);
+    this.navCtrl.push(ViewMealPage);
   }
 
 }

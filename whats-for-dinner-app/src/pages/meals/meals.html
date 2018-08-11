@@ -14,8 +14,8 @@
 <ion-content padding>
 
   <ion-list>
-    <ion-item-sliding *ngFor="let meal of this.appData.meals">
-      <ion-item>{{meal.name}}</ion-item>
+    <ion-item-sliding *ngFor="let meal of this.appData.meals; let mealIndex = index">
+      <button ion-item (click)="viewMeal(mealIndex)">{{meal.name}}</button>
       <ion-item-options slide="right">
         <button ion-button>
           <ion-icon name="md-create"> </ion-icon>

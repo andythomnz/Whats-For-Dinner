@@ -1,0 +1,55 @@
+<!--
+  Generated template for the ViewMealPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{this.selectedMeal.name}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-item>
+      <ion-label fixed>Name</ion-label>
+      <ion-input type="text" readonly="true" [(ngModel)]="this.selectedMeal.name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+      <ion-label fixed>Cost</ion-label>
+      <ion-input type="text" readonly="true" [(ngModel)]="this.appData.costDescriptions[this.selectedMeal.cost]"></ion-input>
+  </ion-item>
+
+  <ion-item>
+      <ion-label fixed>Convenience</ion-label>
+      <ion-input type="text" readonly="true" [(ngModel)]="this.appData.convenienceDescriptions[this.selectedMeal.convenience]"></ion-input>
+  </ion-item>
+
+  <br><br><br><br><br>
+
+  <ion-title>I would eat this for:</ion-title>
+  <ion-item>
+      <ion-input type="text" readonly="true" value="Breakfast"></ion-input>
+      <ion-checkbox disabled="true" [(ngModel)]="this.selectedMeal.breakfast"></ion-checkbox>
+  </ion-item>
+
+  <ion-item>
+      <ion-input type="text" readonly="true" value="Lunch"></ion-input>
+      <ion-checkbox disabled="true" [(ngModel)]="this.selectedMeal.lunch"></ion-checkbox>
+  </ion-item>
+
+  <ion-item>
+      <ion-input type="text" readonly="true" value="Dinner"></ion-input>
+      <ion-checkbox disabled="true" [(ngModel)]="this.selectedMeal.dinner"></ion-checkbox>
+  </ion-item>
+
+  <!-- <ion-item>
+      <ion-range min="0" max="2" step="1" snaps="true"></ion-range>
+  </ion-item> -->
+
+</ion-content>

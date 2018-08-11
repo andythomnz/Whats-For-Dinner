@@ -27,6 +27,10 @@ export class AppDataProvider {
   currentTime: Moment;
 
   meals: any[];
+  selectedMealIndex: Decimal;
+
+  costDescriptions: any[]=[];
+  convenienceDescriptions: any[]=[];
 
   checkIfBreakfastTime() {
     let currentTime = moment(this.currentTime);
@@ -45,6 +49,8 @@ export class AppDataProvider {
 
     this.isBreakfastTime = currentTime.isBetween(startTime, endTime);
   }
+
+  //comment
 
   checkIfLunchTime() {
     let currentTime = moment(this.currentTime);
@@ -68,6 +74,7 @@ export class AppDataProvider {
   checkIfDinnerTime() {
     let currentTime = moment(this.currentTime);
     //let currentTime = moment("10:30", "HH:mm");
+    //
 
     //Check if it's dinner time
     let startTime = moment(this.dinnerStart, "HH:mm").subtract(1, "minutes");
@@ -152,6 +159,7 @@ export class AppDataProvider {
     //   "Lunch time is " + this.lunchTime + ",  but it is available from " + this.lunchStart + " until " + this.lunchEnd + ". \n" +
     //   "Dinner time is " + this.dinnerTime + ", but it is available from " + this.dinnerStart + " until " + this.dinnerEnd + "."
     // );
+    //comment
 
 
   }
@@ -171,11 +179,16 @@ export class AppDataProvider {
     });
   }
 
+  setSelectedMealIndex(index) {
+    this.selectedMealIndex = index;
+  }
+
   constructor(public http: HttpClient) {
     console.log('Hello AppDataProvider Provider');
 
-    //hihihi
-    //hi
+    this.costDescriptions = ["Cheap", "Moderate", "Expensive"];
+    this.convenienceDescriptions = ["Quick & Easy", "Average", "Complex"];
+
 
     this.meals = [];
     this.meals.push({
@@ -213,6 +226,8 @@ export class AppDataProvider {
 
     this.determineCutOffTimes();
     this.determineMealTime();
+
+
   }
 
 }
