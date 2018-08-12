@@ -11,6 +11,7 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { ViewMealPage } from '../pages/view-meal/view-meal';
 import { EditMealPage } from '../pages/edit-meal/edit-meal';
+import { ChosenMealPage } from '../pages/chosen-meal/chosen-meal';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -24,7 +25,8 @@ import { AppDataProvider } from '../providers/app-data/app-data';
     HomePage,
     TabsPage,
     ViewMealPage,
-    EditMealPage
+    EditMealPage,
+    ChosenMealPage
   ],
   imports: [
     HttpClientModule,
@@ -39,7 +41,8 @@ import { AppDataProvider } from '../providers/app-data/app-data';
     HomePage,
     TabsPage,
     ViewMealPage,
-    EditMealPage
+    EditMealPage,
+    ChosenMealPage
   ],
   providers: [
     StatusBar,

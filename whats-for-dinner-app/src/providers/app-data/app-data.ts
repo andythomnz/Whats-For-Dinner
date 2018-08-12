@@ -32,6 +32,31 @@ export class AppDataProvider {
   costDescriptions: any[]=[];
   convenienceDescriptions: any[]=[];
 
+  task : any;
+
+  getMealsForCurrentMealTime() {
+    let appropriateMeals = [];
+    for (let i=0; i < this.meals.length; i++) {
+      let eachMeal = this.meals[i];
+      if (this.currentMeal == "lunch" && eachMeal.lunch==true) {
+        appropriateMeals.push(eachMeal);
+      }else if (this.currentMeal == "breakfast" && eachMeal.breakfast==true) {
+        appropriateMeals.push(eachMeal);
+      } else if (this.currentMeal == "dinner" && eachMeal.dinner==true) {
+        appropriateMeals.push(eachMeal);
+      }
+    }
+    return appropriateMeals;
+  }
+
+  getPluralOfCurrentMealTime() {
+    if (this.currentMeal == "lunch") {
+      return "lunches"
+    } else {
+      return this.currentMeal + "s";
+    }
+  }
+
   checkIfBreakfastTime() {
     let currentTime = moment(this.currentTime);
 
@@ -187,16 +212,16 @@ export class AppDataProvider {
     this.meals.splice(index, 1);
   }
 
-  constructor(public http: HttpClient) {
-    console.log('Hello AppDataProvider Provider');
+  refresh() {
+    this.sortMealList();
+    this.determineCutOffTimes();
+    this.determineMealTime();
+  }
 
-    this.costDescriptions = ["Cheap", "Moderate", "Expensive"];
-    this.convenienceDescriptions = ["Quick & Easy", "Average", "Complex"];
-
-
-    this.meals = [];
+  addTemplateMeals() {
+    //Breakfasts
     this.meals.push({
-      name: "Default Breakfast",
+      name: "Toast",
       cost: 0,
       convenience: 0,
       breakfast: true,
@@ -205,8 +230,55 @@ export class AppDataProvider {
     });
 
     this.meals.push({
-      name: "Default Lunch",
-      cost: 1,
+      name: "Cereal",
+      cost: 0,
+      convenience: 0,
+      breakfast: true,
+      lunch: true,
+      dinner: false
+    });
+
+    this.meals.push({
+      name: "Porridge",
+      cost: 0,
+      convenience: 1,
+      breakfast: true,
+      lunch: false,
+      dinner: false
+    });
+
+    this.meals.push({
+      name: "Pancakes",
+      cost: 0,
+      convenience: 2,
+      breakfast: true,
+      lunch: false,
+      dinner: false
+    });
+
+    this.meals.push({
+      name: "French toast with bacon",
+      cost: 2,
+      convenience: 2,
+      breakfast: true,
+      lunch: false,
+      dinner: false
+    });
+
+    this.meals.push({
+      name: "Omlette",
+      cost: 0,
+      convenience: 1,
+      breakfast: true,
+      lunch: false,
+      dinner: false
+    });
+
+    //Lunches
+
+    this.meals.push({
+      name: "Toasted sandwhich",
+      cost: 0,
       convenience: 1,
       breakfast: false,
       lunch: true,
@@ -214,7 +286,54 @@ export class AppDataProvider {
     });
 
     this.meals.push({
-      name: "Default Dinner",
+      name: "Instant noodles",
+      cost: 0,
+      convenience: 0,
+      breakfast: false,
+      lunch: true,
+      dinner: false
+    });
+
+    this.meals.push({
+      name: "Sushi",
+      cost: 2,
+      convenience: 0,
+      breakfast: false,
+      lunch: true,
+      dinner: false
+    });
+
+    this.meals.push({
+      name: "Caesar salad",
+      cost: 1,
+      convenience: 2,
+      breakfast: false,
+      lunch: true,
+      dinner: true
+    });
+
+    this.meals.push({
+      name: "Krishna food",
+      cost: 0,
+      convenience: 0,
+      breakfast: false,
+      lunch: true,
+      dinner: false
+    });
+
+    this.meals.push({
+      name: "Burger King",
+      cost: 1,
+      convenience: 1,
+      breakfast: false,
+      lunch: true,
+      dinner: true
+    });
+
+    // Dinners
+
+    this.meals.push({
+      name: "Beef Lasagne",
       cost: 2,
       convenience: 2,
       breakfast: false,
@@ -222,7 +341,63 @@ export class AppDataProvider {
       dinner: true
     });
 
+    this.meals.push({
+      name: "Stir Fry",
+      cost: 1,
+      convenience: 1,
+      breakfast: false,
+      lunch: false,
+      dinner: true
+    });
+
+    this.meals.push({
+      name: "Nachos",
+      cost: 0,
+      convenience: 1,
+      breakfast: false,
+      lunch: false,
+      dinner: true
+    });
+
+    this.meals.push({
+      name: "Nasi Goreng",
+      cost: 0,
+      convenience: 2,
+      breakfast: false,
+      lunch: false,
+      dinner: true
+    });
+
+    this.meals.push({
+      name: "Chicken Katsu",
+      cost: 1,
+      convenience: 0,
+      breakfast: false,
+      lunch: true,
+      dinner: true
+    });
+
+    this.meals.push({
+      name: "Anything from KC Cafe",
+      cost: 1,
+      convenience: 0,
+      breakfast: false,
+      lunch: false,
+      dinner: true
+    });
+
     this.sortMealList();
+  }
+
+  constructor(public http: HttpClient) {
+    console.log('Hello AppDataProvider Provider');
+
+    this.costDescriptions = ["Cheap", "Moderate", "Expensive"];
+    this.convenienceDescriptions = ["Quick & Easy", "Average", "Complex"];
+
+
+    this.meals = [];
+    this.addTemplateMeals();
 
     this.breakfastTime = "08:00";
     this.lunchTime = "13:00";
@@ -230,6 +405,10 @@ export class AppDataProvider {
 
     this.determineCutOffTimes();
     this.determineMealTime();
+
+    this.task = setInterval(() => {
+      this.refresh();
+    },5000);
 
 
   }

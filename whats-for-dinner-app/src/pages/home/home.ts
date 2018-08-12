@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 import { AppDataProvider } from '../../providers/app-data/app-data';
+import { ChosenMealPage } from '../chosen-meal/chosen-meal';
 import * as moment from "moment";
 
 // hihihi
@@ -10,6 +11,9 @@ import * as moment from "moment";
   templateUrl: 'home.html'
 })
 export class HomePage {
+
+  desiredCost : Decimal;
+  desiredConvenience : Decimal;
 
   getCapitalisedMeal() {
     return this.appData.currentMeal.charAt(0).toUpperCase() + this.appData.currentMeal.slice(1);
@@ -51,6 +55,46 @@ export class HomePage {
 
       return hourAmount + " " + hourUnit + " " + minuteAmount + " " + minuteUnit;
     }
+  }
+
+  chooseMeal() {
+    let appropriateMeals = this.appData.getMealsForCurrentMealTime();
+
+    if (appropriateMeals.length < 1) {
+      // warn the user no meals for this meal time
+      let noMealsAlert = this.alertCtrl.create({
+        title: 'No matches!',
+        subTitle: "You don't have any " + this.appData.getPluralOfCurrentMealTime() + " in your meals list!",
+        buttons: ["OK"]
+      });
+      noMealsAlert.present();
+      return;
+    }
+    let matchingMeals = [];
+    for (let i = 0; i < appropriateMeals.length; i++) {
+      let eachMeal = appropriateMeals[i];
+      if ((eachMeal.cost == this.desiredCost) && (eachMeal.convenience == this.desiredConvenience)) {
+        matchingMeals.push(eachMeal);
+      }
+    }
+    if (matchingMeals.length < 1){
+      // warn the user no meals are a perfect match
+      let noMatchingMealsAlert = this.alertCtrl.create({
+        title: 'No matches!',
+        subTitle: "There aren't any meals matching your desired cost & convenience!",
+        buttons: ["OK"]
+      });
+      noMatchingMealsAlert.present();
+      return;
+    }
+
+    let randomIndex = Math.floor(Math.random() * (matchingMeals.length));
+    this.appData.selectedMealIndex = randomIndex;
+    this.navCtrl.push(ChosenMealPage);
+    // alert(
+    //   "Chose random index " + randomIndex + " of " + matchingMeals.length-1 + " \n" +
+    //   matchingMeals[randomIndex].name + ": cost is " + matchingMeals[randomIndex].cost + ", convenience is: " + matchingMeals[randomIndex].convenience
+    // );
   }
 
   getMealTimeDescription() {
@@ -118,8 +162,9 @@ export class HomePage {
     }
   }
 
-  constructor(public navCtrl: NavController, public appData: AppDataProvider) {
-
+  constructor(public navCtrl: NavController, public appData: AppDataProvider, public alertCtrl: AlertController) {
+    this.desiredCost = 0;
+    this.desiredConvenience = 0;
 
 
   }

@@ -8,16 +8,25 @@
   <div text-center>
   <p><strong> {{this.getMealTimeDescription()}} </strong></p>
   </div>
-
-  <!-- <p>
-    The meal times shall be as follwing:<br><br>
-    Breakfast time is {{this.appData.breakfastTime}} but can be eaten
-    between {{this.appData.breakfastStart}} and {{this.appData.breakfastEnd}} <br><br>
-
-    Lunch time is {{this.appData.lunchTime}} but can be eaten
-    between {{this.appData.lunchStart}} and {{this.appData.lunchEnd}} <br><br>
-
-    Dinner time is {{this.appData.dinnerTime}} but can be eaten
-    between {{this.appData.dinnerStart}} and {{this.appData.dinnerEnd}} <br><br>
-  </p> -->
+  <br><br><br>
+  <ion-list>
+    <ion-list-header>
+      I want a meal that is:
+      <ion-badge item-end>{{this.appData.costDescriptions[this.desiredCost]}}</ion-badge>
+    </ion-list-header>
+    <ion-item>
+        <ion-range min="0" max="2" step="1" snaps="true" [(ngModel)]="this.desiredCost"></ion-range>
+    </ion-item>
+    <ion-list-header>
+      I want a meal that is:
+      <ion-badge item-end>{{this.appData.convenienceDescriptions[this.desiredConvenience]}}</ion-badge>
+    </ion-list-header>
+    <ion-item>
+        <ion-range min="0" max="2" step="1" snaps="true" [(ngModel)]="this.desiredConvenience"></ion-range>
+    </ion-item>
+  </ion-list>
+  <br><br><br>
+  <div text-center>
+    <button ion-button color="secondary" round (click)="chooseMeal()">Help me choose my {{this.appData.currentMeal}}!</button>
+  </div>
 </ion-content>

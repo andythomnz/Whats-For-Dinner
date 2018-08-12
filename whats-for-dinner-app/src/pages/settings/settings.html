@@ -8,10 +8,20 @@
 
 <ion-content>
   <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
+    <ion-list-header>Meal times:</ion-list-header>
     <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
+      <ion-label>Breakfast Time</ion-label>
+      <ion-datetime displayFormat="HH:mm" pickerFormat="h:mm a" [(ngModel)]="this.appData.breakfastTime" > </ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Lunch Time</ion-label>
+      <ion-datetime displayFormat="HH:mm" pickerFormat="h:mm a" [(ngModel)]="this.appData.lunchTime" > </ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Dinner Time</ion-label>
+      <ion-datetime displayFormat="HH:mm" pickerFormat="h:mm a" [(ngModel)]="this.appData.dinnerTime" > </ion-datetime>
     </ion-item>
   </ion-list>
 </ion-content>
