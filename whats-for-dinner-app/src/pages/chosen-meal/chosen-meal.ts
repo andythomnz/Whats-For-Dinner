@@ -8,6 +8,7 @@ import { AppDataProvider } from '../../providers/app-data/app-data';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
+ //
 
 @IonicPage()
 @Component({
@@ -17,10 +18,14 @@ import { AppDataProvider } from '../../providers/app-data/app-data';
 export class ChosenMealPage {
 
   chosenMeal : any;
+  cost : String;
+  convenience : String;
   upperCaseName : String;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public appData: AppDataProvider) {
     this.chosenMeal = this.appData.meals[this.appData.selectedMealIndex];
+    this.cost = this.appData.costDescriptions[this.appData.meals[this.appData.selectedMealIndex].cost];
+    this.convenience = this.appData.convenienceDescriptions[this.appData.meals[this.appData.selectedMealIndex].convenience];
     this.upperCaseName = this.chosenMeal.name.toUpperCase();
   }
 

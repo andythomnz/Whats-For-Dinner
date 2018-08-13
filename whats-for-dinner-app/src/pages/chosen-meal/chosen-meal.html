@@ -19,10 +19,14 @@
 
   <h1>{{this.upperCaseName}}!</h1>
 
-  <p>Cost: {{this.appData.costDescriptions[this.appData.selectedMealIndex]}}</p>
-  <p>Convenience: {{this.appData.convenienceDescriptions[this.appData.selectedMealIndex]}}</p>
+  <p>Cost: {{this.cost}}</p>
+  <p>Convenience: {{this.convenience}}</p>
   </div>
-  <br><br>
+
+  <div text-center>
+      <img [width]="this.appData.imageWidth" [height]="this.appData.imageHeight" [src]="this.appData.imageUrl">
+  </div>
+  <br>
   <div text-center>
     <button ion-button color="secondary" round (click)="buttonClicked()">Bon Appétit!</button>
   </div>
