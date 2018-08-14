@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AppDataProvider } from '../../providers/app-data/app-data';
+import { IonicImageLoader } from 'ionic-image-loader';
 
 /**
  * Generated class for the ChosenMealPage page.
@@ -9,24 +10,32 @@ import { AppDataProvider } from '../../providers/app-data/app-data';
  * Ionic pages and navigation.
  */
  //
+ //
 
 @IonicPage()
 @Component({
   selector: 'page-chosen-meal',
   templateUrl: 'chosen-meal.html',
 })
+
 export class ChosenMealPage {
 
   chosenMeal : any;
   cost : String;
   convenience : String;
   upperCaseName : String;
+  loadingAnimation : String;
+  style: String;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public appData: AppDataProvider) {
     this.chosenMeal = this.appData.meals[this.appData.selectedMealIndex];
     this.cost = this.appData.costDescriptions[this.appData.meals[this.appData.selectedMealIndex].cost];
     this.convenience = this.appData.convenienceDescriptions[this.appData.meals[this.appData.selectedMealIndex].convenience];
     this.upperCaseName = this.chosenMeal.name.toUpperCase();
+    this.loadingAnimation = "assets/imgs/preloader.gif";
+
+    //document.getElementById('food-image').setAttribute("style", "width:"+this.appData.imageWidth+"px;height:"+this.appData.imageHeight+"px;");
+    this.style = "height: " + this.appData.imageHeight+"px; width: " + this.appData.imageWidth + "px;";
   }
 
   ionViewDidLoad() {

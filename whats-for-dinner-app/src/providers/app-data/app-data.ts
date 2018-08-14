@@ -34,6 +34,10 @@ export class AppDataProvider {
 
   task : any;
 
+  imageUrl: String;
+  imageWidth: any;
+  imageHeight: any;
+
   getMealsForCurrentMealTime() {
     let appropriateMeals = [];
     for (let i=0; i < this.meals.length; i++) {

@@ -23,8 +23,10 @@
   <p>Convenience: {{this.convenience}}</p>
   </div>
 
-  <div text-center>
-      <img [width]="this.appData.imageWidth" [height]="this.appData.imageHeight" [src]="this.appData.imageUrl">
+  <div class="food-image" [style]="this.style" text-center>
+      <!-- <object data="assets/imgs/preloader2.gif" type="image/gif"> -->
+        <img [width]="this.appData.imageWidth" [height]="this.appData.imageHeight" [src]="this.appData.imageUrl" />
+      <!-- </object> -->
   </div>
   <br>
   <div text-center>

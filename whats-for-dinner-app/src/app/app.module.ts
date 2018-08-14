@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+import { IonicImageLoader } from 'ionic-image-loader';
 
 
 import { MealsPage } from '../pages/meals/meals';
@@ -31,6 +32,7 @@ import { AppDataProvider } from '../providers/app-data/app-data';
   imports: [
     HttpClientModule,
     BrowserModule,
+    IonicImageLoader.forRoot(),
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],

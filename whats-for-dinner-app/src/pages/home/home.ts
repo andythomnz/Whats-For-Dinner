@@ -105,6 +105,8 @@ export class HomePage {
       }
     }
     console.log("Selected");
+    this.appData.imageUrl="";
+    this.navCtrl.push(ChosenMealPage);
     this.getImage();
     // alert(
     //   "Chose random index " + randomIndex + " of " + matchingMeals.length-1 + " \n" +
@@ -147,7 +149,7 @@ export class HomePage {
     this.appData.imageHeight = imageHeight;
     this.appData.imageWidth = imageWidth;
 
-    this.navCtrl.push(ChosenMealPage);
+    // this.navCtrl.push(ChosenMealPage);
 
 
   }
