@@ -229,8 +229,8 @@ export class AppDataProvider {
       cost: 0,
       convenience: 0,
       breakfast: true,
-      lunch: false,
-      dinner: false
+      lunch: true,
+      dinner: true
     });
 
     this.meals.push({
@@ -239,7 +239,7 @@ export class AppDataProvider {
       convenience: 0,
       breakfast: true,
       lunch: true,
-      dinner: false
+      dinner: true
     });
 
     this.meals.push({
@@ -256,8 +256,8 @@ export class AppDataProvider {
       cost: 0,
       convenience: 2,
       breakfast: true,
-      lunch: false,
-      dinner: false
+      lunch: true,
+      dinner: true
     });
 
     this.meals.push({
@@ -265,7 +265,7 @@ export class AppDataProvider {
       cost: 2,
       convenience: 2,
       breakfast: true,
-      lunch: false,
+      lunch: true,
       dinner: false
     });
 
@@ -275,7 +275,7 @@ export class AppDataProvider {
       convenience: 1,
       breakfast: true,
       lunch: false,
-      dinner: false
+      dinner: true
     });
 
     //Lunches
@@ -286,7 +286,7 @@ export class AppDataProvider {
       convenience: 1,
       breakfast: false,
       lunch: true,
-      dinner: false
+      dinner: true
     });
 
     this.meals.push({
@@ -295,7 +295,7 @@ export class AppDataProvider {
       convenience: 0,
       breakfast: false,
       lunch: true,
-      dinner: false
+      dinner: true
     });
 
     this.meals.push({
@@ -304,7 +304,7 @@ export class AppDataProvider {
       convenience: 0,
       breakfast: false,
       lunch: true,
-      dinner: false
+      dinner: true
     });
 
     this.meals.push({
@@ -322,14 +322,14 @@ export class AppDataProvider {
       convenience: 0,
       breakfast: false,
       lunch: true,
-      dinner: false
+      dinner: true
     });
 
     this.meals.push({
-      name: "Burger King",
+      name: "McDonalds",
       cost: 1,
       convenience: 1,
-      breakfast: false,
+      breakfast: true,
       lunch: true,
       dinner: true
     });
@@ -341,7 +341,7 @@ export class AppDataProvider {
       cost: 2,
       convenience: 2,
       breakfast: false,
-      lunch: false,
+      lunch: true,
       dinner: true
     });
 
@@ -350,7 +350,7 @@ export class AppDataProvider {
       cost: 1,
       convenience: 1,
       breakfast: false,
-      lunch: false,
+      lunch: true,
       dinner: true
     });
 
@@ -359,7 +359,7 @@ export class AppDataProvider {
       cost: 0,
       convenience: 1,
       breakfast: false,
-      lunch: false,
+      lunch: true,
       dinner: true
     });
 
@@ -368,7 +368,7 @@ export class AppDataProvider {
       cost: 0,
       convenience: 2,
       breakfast: false,
-      lunch: false,
+      lunch: true,
       dinner: true
     });
 
@@ -382,11 +382,11 @@ export class AppDataProvider {
     });
 
     this.meals.push({
-      name: "Anything from KC Cafe",
+      name: "Pad Thai",
       cost: 1,
       convenience: 0,
       breakfast: false,
-      lunch: false,
+      lunch: true,
       dinner: true
     });
 
