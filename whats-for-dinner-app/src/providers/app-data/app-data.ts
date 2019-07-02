@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import moment from 'moment';
+import moment, { Moment } from 'moment';
 
 /*
   Generated class for the AppDataProvider provider.
@@ -11,23 +11,23 @@ import moment from 'moment';
 @Injectable()
 export class AppDataProvider {
 
-  breakfastStart: String;
-  breakfastTime: String;
-  breakfastEnd: String;
+  breakfastStart: string;
+  breakfastTime: string;
+  breakfastEnd: string;
   isBreakfastTime : Boolean;
-  lunchStart: String;
-  lunchTime: String;
-  lunchEnd: String;
+  lunchStart: string;
+  lunchTime: string;
+  lunchEnd: string;
   isLunchTime: Boolean;
-  dinnerStart: String;
-  dinnerTime: String;
-  dinnerEnd: String;
+  dinnerStart: string;
+  dinnerTime: string;
+  dinnerEnd: string;
   isDinnerTime : Boolean;
-  currentMeal: String;
+  currentMeal: string;
   currentTime: Moment;
 
   meals: any[];
-  selectedMealIndex: Decimal;
+  selectedMealIndex: number;
 
   costDescriptions: any[]=[];
   convenienceDescriptions: any[]=[];

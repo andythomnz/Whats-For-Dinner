@@ -14,8 +14,8 @@ import * as moment from "moment";
 })
 export class HomePage {
 
-  desiredCost : decimal;
-  desiredConvenience : decimal;
+  desiredCost : number;
+  desiredConvenience : number;
 
   searchResults: Observable<any>;
 
@@ -175,7 +175,7 @@ export class HomePage {
           return "You're a bit slow this morning!\n Breakfast was " + timeDiffString + " ago!";
         }
 
-        break;
+        //break;
       }
       case "lunch": {
         //if it's lunch
@@ -195,7 +195,7 @@ export class HomePage {
           return "You must be having a busy day!\n Lunch was " + timeDiffString + " ago!";
         }
 
-        break;
+        //break;
       }
       case "dinner": {
         //if it's dinner
@@ -214,7 +214,7 @@ export class HomePage {
         } else {
           return "I bet you're starving!\n Dinner was " + timeDiffString + " ago!";
         }
-        break;
+        //break;
       }
     }
   }

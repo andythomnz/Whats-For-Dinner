@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController, AlertController, ItemSliding } from 'ionic-angular';
 import { AppDataProvider } from '../../providers/app-data/app-data';
 import { ViewMealPage } from '../view-meal/view-meal';
 import { EditMealPage } from '../edit-meal/edit-meal';
