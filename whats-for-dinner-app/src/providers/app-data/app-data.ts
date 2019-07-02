@@ -2,12 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import moment, { Moment } from 'moment';
 
-/*
-  Generated class for the AppDataProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class AppDataProvider {
 
@@ -44,7 +38,7 @@ export class AppDataProvider {
       let eachMeal = this.meals[i];
       if (this.currentMeal == "lunch" && eachMeal.lunch==true) {
         appropriateMeals.push(eachMeal);
-      }else if (this.currentMeal == "breakfast" && eachMeal.breakfast==true) {
+      } else if (this.currentMeal == "breakfast" && eachMeal.breakfast==true) {
         appropriateMeals.push(eachMeal);
       } else if (this.currentMeal == "dinner" && eachMeal.dinner==true) {
         appropriateMeals.push(eachMeal);
@@ -73,13 +67,13 @@ export class AppDataProvider {
       endTime.add(1, "days");
       if (currentTime.hour() <= 12) {
         currentTime.add(1, "days");
+        //add a day to current time to compensate for adding a day to end time
       }
     }
 
     this.isBreakfastTime = currentTime.isBetween(startTime, endTime);
   }
 
-  //comment
 
   checkIfLunchTime() {
     let currentTime = moment(this.currentTime);
@@ -94,6 +88,7 @@ export class AppDataProvider {
       endTime.add(1, "days");
       if (currentTime.hour() <= 12) {
         currentTime.add(1, "days");
+        //add a day to current time to compensate for adding a day to end time
       }
     }
 
@@ -114,6 +109,7 @@ export class AppDataProvider {
       endTime.add(1, "days");
       if (currentTime.hour() <= 12) {
         currentTime.add(1, "days");
+        //add a day to current time to compensate for adding a day to end time
       }
     }
 
@@ -122,7 +118,6 @@ export class AppDataProvider {
 
   determineMealTime() {
     this.currentTime = moment();
-    //this.currentTime = moment("10:00", "HH:mm");
     this.checkIfBreakfastTime();
     this.checkIfLunchTime();
     this.checkIfDinnerTime();
@@ -134,12 +129,12 @@ export class AppDataProvider {
     }else {
       this.currentMeal = "breakfast";
     }
-
-    // alert("It's currently " + this.currentMeal.toUpperCase());
-
   }
 
   determineCutOffTimes() {
+    // Splits a 24hr period into three segments (one for each meal), which surround the user specified Breakfast/Lunch/Dinner times. 
+    // This is used to recommend the correct meal type during the period before / after specified meal times. 
+
     let diffBetweenBreakfastAndLunch = moment(this.lunchTime, "HH:mm").diff(moment(this.breakfastTime, "HH:mm"));
     let dBL = moment.duration(diffBetweenBreakfastAndLunch);
     let breakfastToLunch =  Math.floor(dBL.asHours()) + moment.utc(diffBetweenBreakfastAndLunch).format(":mm");
@@ -161,20 +156,6 @@ export class AppDataProvider {
     let minsAfterDinner = (moment.duration(dinnerToBreakfast1).asMinutes()/2);
     let dinnerCutOff = moment(this.dinnerTime, "HH:mm").add(minsAfterDinner, "minutes").format("HH:mm");
 
-    // alert(
-    //   "Breakfast Time is: " + this.breakfastTime + "\n" +
-    //   "Then wait " + breakfastToLunch + " until lunch" + "\n" +
-    //   "The cut-off time for breakfast is: " + breakfastCutOff + "\n" +
-    //   "Lunch Time is: " + this.lunchTime + "\n" +
-    //   "Then wait " + lunchToDinner + " until dinner" + "\n" +
-    //   "The cut-off time for lunch is: " + lunchCutOff + "\n" +
-    //   "Dinner Time is: " + this.dinnerTime + "\n" +
-    //   "Then wait " + dinnerToBreakfast1 + " until breakfast" + "\n" +
-    //   "The cut-off time for dinner is: " + dinnerCutOff + ". \n"
-    // );
-
-
-
     this.breakfastEnd = breakfastCutOff;
     this.lunchEnd = lunchCutOff;
     this.dinnerEnd = dinnerCutOff;
@@ -182,15 +163,6 @@ export class AppDataProvider {
     this.breakfastStart = moment(dinnerCutOff, "HH:mm").add(1, "minute").format("HH:mm");
     this.lunchStart = moment(breakfastCutOff, "HH:mm").add(1, "minute").format("HH:mm");
     this.dinnerStart = moment(lunchCutOff, "HH:mm").add(1, "minute").format("HH:mm");
-
-    // alert(
-    //   "Breakfast time is " + this.breakfastTime + ", but it is available from " + this.breakfastStart + " until " + this.breakfastEnd + ". \n" +
-    //   "Lunch time is " + this.lunchTime + ",  but it is available from " + this.lunchStart + " until " + this.lunchEnd + ". \n" +
-    //   "Dinner time is " + this.dinnerTime + ", but it is available from " + this.dinnerStart + " until " + this.dinnerEnd + "."
-    // );
-    //comment
-
-
   }
 
   sortMealList() {
@@ -279,7 +251,6 @@ export class AppDataProvider {
     });
 
     //Lunches
-
     this.meals.push({
       name: "Toasted sandwhich",
       cost: 0,
@@ -335,7 +306,6 @@ export class AppDataProvider {
     });
 
     // Dinners
-
     this.meals.push({
       name: "Beef Lasagne",
       cost: 2,
@@ -394,11 +364,8 @@ export class AppDataProvider {
   }
 
   constructor(public http: HttpClient) {
-    console.log('Hello AppDataProvider Provider');
-
     this.costDescriptions = ["Cheap", "Moderate", "Expensive"];
     this.convenienceDescriptions = ["Quick & Easy", "Average", "Complex"];
-
 
     this.meals = [];
     this.addTemplateMeals();

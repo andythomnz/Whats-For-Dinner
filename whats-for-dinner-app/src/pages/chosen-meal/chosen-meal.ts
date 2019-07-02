@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AppDataProvider } from '../../providers/app-data/app-data';
-import { IonicImageLoader } from 'ionic-image-loader';
 
 /**
  * Generated class for the ChosenMealPage page.
@@ -34,7 +33,6 @@ export class ChosenMealPage {
     this.upperCaseName = this.chosenMeal.name.toUpperCase();
     this.loadingAnimation = "assets/imgs/preloader.gif";
 
-    //document.getElementById('food-image').setAttribute("style", "width:"+this.appData.imageWidth+"px;height:"+this.appData.imageHeight+"px;");
     this.style = "height: " + this.appData.imageHeight+"px; width: " + this.appData.imageWidth + "px;";
   }
 

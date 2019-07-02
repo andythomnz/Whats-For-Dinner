@@ -14,9 +14,7 @@ export class MealsPage {
 
 
   constructor(public navCtrl: NavController, public alertController: AlertController, public appData: AppDataProvider) {
-    //this.meals = this.appData.meals;
-
-
+    
   }
 
   addMeal() {

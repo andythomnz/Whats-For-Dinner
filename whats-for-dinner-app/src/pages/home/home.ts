@@ -6,7 +6,7 @@ import { AppDataProvider } from '../../providers/app-data/app-data';
 import { ChosenMealPage } from '../chosen-meal/chosen-meal';
 import * as moment from "moment";
 
-// hihihi
+
 
 @Component({
   selector: 'page-home',
@@ -75,10 +75,8 @@ export class HomePage {
       return;
     }
     let matchingMeals = [];
-    console.log("Looking for Cost of " + this.desiredCost + "and convenience of " + this.desiredConvenience);
     for (let i = 0; i < appropriateMeals.length; i++) {
       let eachMeal = appropriateMeals[i];
-      console.log("Evaluating " + eachMeal.name + ", cost is " + eachMeal.cost + ", convenience is " + eachMeal.convenience);
       if ((eachMeal.cost === this.desiredCost) && (eachMeal.convenience === this.desiredConvenience)) {
         console.log("MATCH!");
         matchingMeals.push(eachMeal);
@@ -108,17 +106,11 @@ export class HomePage {
     this.appData.imageUrl="";
     this.navCtrl.push(ChosenMealPage);
     this.getImage();
-    // alert(
-    //   "Chose random index " + randomIndex + " of " + matchingMeals.length-1 + " \n" +
-    //   matchingMeals[randomIndex].name + ": cost is " + matchingMeals[randomIndex].cost + ", convenience is: " + matchingMeals[randomIndex].convenience
-    // );
-    //
   }
 
   getImage() {
     let url = "https://www.googleapis.com/customsearch/v1?key=AIzaSyDFYAcCzPMsvZgVHr8z7Tz1lsrPKZyjChM&cx=018029367248808413633:jdmvtl6gj_s&q=";
     url = url + this.appData.meals[this.appData.selectedMealIndex].name;
-    //url = url + "chocolate";
     url = url + "&searchType=image&imgSize=medium";
 
     this.searchResults = this.httpClient.get(url);
@@ -130,13 +122,10 @@ export class HomePage {
   }
 
   imageResults(data){
-    console.log("FINISHED LOADING!");
-
     let imageURL = data.items[0].link;
     let imageWidth = data.items[0].image.width;
     let imageHeight = data.items[0].image.height;
 
-    //let deviceWidth = this.platform.width();
     let deviceWidth = window.innerWidth;
 
     if (imageWidth > deviceWidth) {
@@ -148,10 +137,6 @@ export class HomePage {
     this.appData.imageUrl = imageURL;
     this.appData.imageHeight = imageHeight;
     this.appData.imageWidth = imageWidth;
-
-    // this.navCtrl.push(ChosenMealPage);
-
-
   }
 
   getMealTimeDescription() {
@@ -175,7 +160,6 @@ export class HomePage {
           return "You're a bit slow this morning!\n Breakfast was " + timeDiffString + " ago!";
         }
 
-        //break;
       }
       case "lunch": {
         //if it's lunch
@@ -195,7 +179,6 @@ export class HomePage {
           return "You must be having a busy day!\n Lunch was " + timeDiffString + " ago!";
         }
 
-        //break;
       }
       case "dinner": {
         //if it's dinner
@@ -214,7 +197,7 @@ export class HomePage {
         } else {
           return "I bet you're starving!\n Dinner was " + timeDiffString + " ago!";
         }
-        //break;
+
       }
     }
   }
@@ -222,11 +205,5 @@ export class HomePage {
   constructor(public navCtrl: NavController, public appData: AppDataProvider, public alertCtrl: AlertController, public httpClient: HttpClient, platform: Platform) {
     this.desiredCost = 0;
     this.desiredConvenience = 0;
-
-
   }
-
-
-
-
 }

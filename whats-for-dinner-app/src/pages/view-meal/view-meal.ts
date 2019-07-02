@@ -26,8 +26,6 @@ export class ViewMealPage {
     this.selectedMeal = this.appData.meals[this.appData.selectedMealIndex];
   }
 
-
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad ViewMealPage');
   }

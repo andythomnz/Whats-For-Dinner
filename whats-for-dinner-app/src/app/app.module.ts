@@ -18,6 +18,10 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AppDataProvider } from '../providers/app-data/app-data';
 
+import { ChosenMealPageModule } from '../pages/chosen-meal/chosen-meal.module';
+import { EditMealPageModule } from '../pages/edit-meal/edit-meal.module';
+import { ViewMealPageModule } from '../pages/view-meal/view-meal.module';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -25,11 +29,14 @@ import { AppDataProvider } from '../providers/app-data/app-data';
     SettingsPage,
     HomePage,
     TabsPage,
-    ViewMealPage,
-    EditMealPage,
-    ChosenMealPage
+    //ViewMealPage,
+    //EditMealPage,
+    //ChosenMealPage
   ],
   imports: [
+    ChosenMealPageModule,
+    EditMealPageModule,
+    ViewMealPageModule,
     HttpClientModule,
     BrowserModule,
     IonicImageLoader.forRoot(),
